@@ -25,12 +25,13 @@ server.listen(port, host, function() {
 	console.log("Listening " + host + ":" + port);
 });
 
+// continuously listens onto server
 fs.watchFile("config.json", function() {
 	config = JSON.parse(fs.readFileSync("config.json"));
 	server.close(); 
 	host = config.host;
 	port = config.port;
 	server.listen(port, host, function() {
-		console.log("Now Listening to" + host + ":" + port);
+		console.log("Now Listening to " + host + ":" + port);
 	});
 });
