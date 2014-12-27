@@ -1,6 +1,6 @@
 var https = require("https");
 
-function getRepos(username, callback) {
+var getRepos = function(username, callback) {
 
 	var options = {
 		host : "api.github.com",
@@ -32,6 +32,9 @@ function getRepos(username, callback) {
 
 getRepos("KLVTZ", function(repos) {
 	console.log("Justin Page has " + repos.length + " repos");
+	repos.forEach(function(repo) {
+		console.log("Name: " + repo.name);
+	});
 });
 
 getRepos("OllieParsley", function(repos) {
