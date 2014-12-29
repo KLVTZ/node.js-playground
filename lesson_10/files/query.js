@@ -30,7 +30,7 @@ getUser(1, function(user) {
 	if(!user) {
 		console.log("No user found with id 1");
 	} else {
-		console.log("We have a user: ", user);
+		console.log("We have a user's twitter: ", user.twitter);
 	}
 });
 
@@ -38,7 +38,7 @@ getUser(2, function(user) {
 	if(!user) {
 		console.log("No user found with id 2");
 	} else {
-		console.log("We have a user: ", user);
+		console.log("We have a user's email: ", user.email);
 	}
 });
 

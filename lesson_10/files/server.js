@@ -11,9 +11,6 @@ var dbPort = mongo.Connection.DEFAULT_PORT;
 
 var app = express();
 
-app.use(app.router);
-app.use(express.static(__dirname + "/public"));
-
 app.get("/", function(request, response) {
 	response.send("hello!");
 });
@@ -27,7 +24,7 @@ app.get("/user/:id", function(request, response) {
 
 	getUser(request.params.id, function(user){
 		if(!user) {
-			response.send("User does not exist", 404);
+			response.status(404).send("User does not exist.");
 		} else {
 			response.send("<a href='http://twitter.com/" + user.twitter + "' target='_blank'>Follow " + user.name + " on twitter</a>");
 		}
