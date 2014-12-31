@@ -147,7 +147,7 @@ We have a user's email:  joeblogs@gmail.com
 No user found with id 3
 ```
 
-Now let's combine the express framework and our recenty query for MongoDB into
+Now let's combine the express framework and our recently query for MongoDB into
 one web request. That is, allowing us the ability to request a user identifier
 to which is used to directly query our db and return an equal selection. By
 calling our `getUser` function from within our `/user/:id` request. We are able
