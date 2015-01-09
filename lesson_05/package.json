@@ -1,5 +1,5 @@
 {
-	"name":        "lesson 05",
+	"name":        "lesson-05",
 	"description": "Example on how to use npm to require modules",
 	"author":      "KLVTZ <xjustinpagex@gmail.com>",
 	"main":        "sample.js",

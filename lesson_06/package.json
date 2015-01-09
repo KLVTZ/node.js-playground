@@ -1,5 +1,5 @@
 {
-	"name":        "lesson 06",
+	"name":        "lesson-06",
 	"description": "Example on how to use the express framework",
 	"author":      "KLVTZ <xjustinpagex@gmail.com>",
 	"main":        "request.js",
