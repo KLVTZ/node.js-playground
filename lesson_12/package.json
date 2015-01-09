@@ -1,0 +1,11 @@
+{
+	"name": "lesson-12",
+	"version": "1.0.0",
+	"description": "Example using express, mongodb, twitter, and socket.io",
+	"author": "Justin Page",
+	"dependencies": {
+		"express": "*",
+		"mongodb": "*",
+		"socket.io" "*"
+	}
+}
