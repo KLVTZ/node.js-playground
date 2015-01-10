@@ -1,14 +1,46 @@
+// begin: app-fog mongodb init
+if(process.env.VCAP_SERVICES){
+	var env = JSON.parse(process.env.VCAP_SERVICES);
+	var mongo = env['mongodb-1.8'][0]['credentials'];
+}
+else{
+	var mongo = {
+		"hostname":"localhost",
+		"port":27017,
+		"username":"",
+		"password":"",
+		"name":"",
+		"db":"db"
+	}
+}
+
+var generate_mongo_url = function(obj){
+	obj.hostname = (obj.hostname || 'localhost');
+	obj.port = (obj.port || 27017);
+	obj.db = (obj.db || 'test');
+
+	if(obj.username && obj.password){
+		return "mongodb://" + obj.username + ":" + obj.password + "@" + obj.hostname + ":" + obj.port + "/" + obj.db;
+	}
+	else{
+		return "mongodb://" + obj.hostname + ":" + obj.port + "/" + obj.db;
+	}
+}
+// end: app-fog mongodb init
+
+var mongourl = generate_mongo_url(mongo);
+
 // bring in your env variables
 require('dot-env');
 
 var fs = require("fs");
-var express = require("express");
-
-var config = JSON.parse(fs.readFileSync("config.json"));
-var host = config.host;
-var port = config.port;
-
+var app = require("express")();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var twitter = require('twitter');
+var config = JSON.parse(fs.readFileSync('config.json'));
+var port = (process.env.VMC_APP_PORT || config.port);
+var host = (process.env.VCAP_APP_HOST || config.host);
 
 // oauth for twitter api
 var twit = new twitter({
@@ -18,17 +50,18 @@ var twit = new twitter({
 	access_token_secret: process.env.ACCESS_TOKEN_SECRET 
 });
 
-
-var app = express(),
-	server = app.listen(port),
-	io = require('socket.io').listen(server);
+var tweetCollection;
 
 // database inclusion
-var mongo = require("mongodb");
-var host = "127.0.0.1";
-var port = mongo.Connection.DEFAULT_PORT;
-var db = new mongo.Db("nodejs-tinkerbox", new mongo.Server(host, port, {}), {safe: true});
-var tweetCollection;
+var mongo = require("mongodb").connect(mongourl, function(err, db) {
+	if (err) console.log(err);
+
+	console.log("Mongo is connected! " + host + ":" + port);
+
+	db.collection("tweet", function(error, collection){
+		tweetCollection = collection;
+	});
+});
 
 app.get("/", function(request, response) {
 	var content = fs.readFileSync("template.html");
@@ -44,15 +77,8 @@ app.get("/", function(request, response) {
 	});
 });
 
-server.listen(port, host);
-
-db.open(function(error){
-	console.log("Mongo is connected! " + host + ":" + port);
-
-	db.collection("tweet", function(error, collection){
-		tweetCollection = collection;
-	});
-
+http.listen(port, function() {
+	console.log("listening on *:3000");
 });
 
 function getTweets(callback) {
