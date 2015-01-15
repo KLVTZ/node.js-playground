@@ -1,0 +1,11 @@
+{
+  "name": "lesson-13",
+  "version": "1.0.0",
+  "description": "Example using tri-directional child processes for standard input and output",
+  "author": "Justin Page <@KLVTZ>",
+  "main": "app.js",
+  "dependencies": {
+    "mongodb": "^2.0.13",
+    "twitter": "^1.0.2"
+  }
+}
