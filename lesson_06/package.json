@@ -1,0 +1,13 @@
+{
+	"name":        "lesson-06",
+	"description": "Example on how to use the express framework",
+	"author":      "KLVTZ <xjustinpagex@gmail.com>",
+	"main":        "request.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/KLVTZ/node.js-playground"
+	},
+	"dependencies": {
+		"express": "*"
+	}
+}

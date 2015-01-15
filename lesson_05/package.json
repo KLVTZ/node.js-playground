@@ -1,0 +1,14 @@
+{
+	"name":        "lesson-05",
+	"description": "Example on how to use npm to require modules",
+	"author":      "KLVTZ <xjustinpagex@gmail.com>",
+	"main":        "sample.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/KLVTZ/node.js-playground"
+	},
+	"dependencies": {
+		"datasift-node": "*",
+		"underscore": "*"
+	}
+}

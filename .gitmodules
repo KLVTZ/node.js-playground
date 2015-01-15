@@ -1,0 +1,6 @@
+[submodule "lesson_11"]
+	path = lesson_11
+	url = https://github.com/KLVTZ/nodejs-twitter-api
+[submodule "node_modules"]
+	path = node_modules
+	url = https://github.com/jonschlinkert/update.git
