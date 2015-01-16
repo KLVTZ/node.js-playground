@@ -2,7 +2,7 @@
 // process.argv[1] => twitter.js
 var keyword = process.argv[2];
 
-// each launch contains consumer ke
+// each launch contains api keys
 var consumerKey = process.argv[3];
 var consumerSecret = process.argv[4];
 var accessTokenKey = process.argv[5];
@@ -14,9 +14,9 @@ setInterval(function() {
 	process.send(tweetCount + " tweets");
 }, 2000);
 
-var twitter = require('ntwitter');
+var twitter = require('twitter');
 
-// oAuth for twitter API v1.1
+// oAuth for twitter 1
 var twit = new twitter({
 	consumer_key: consumerKey,
 	consumer_secret: consumerSecret,

@@ -1,13 +1,14 @@
+require('dot-env');
 var childProcess = require("child_process");
 
 var children = [];
 
 // insert ntwitter creds
 var keywords = [
-	["bieber", "", "",
-	 "", ""],
-	["obama", "", "",
-	 "", ""]
+	["bieber", process.env.CONSUMER_KEY, process.env.CONSUMER_SECRET,
+	 process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET],
+	["obama", process.env.OCONSUMER_KEY, process.env.OCONSUMER_SECRET,
+	 process.env.OACCESS_TOKEN, process.env.OACCESS_TOKEN_SECRET],
 ];
 
 keywords.forEach(function(keywordData) {
