@@ -50,3 +50,16 @@ process.on("exit", function() {
 	})
 });
 ```
+
+Our `twitter.js` is the same but it includes assignment variables from the
+process array that will assign the proper keys and variables for our use within
+that child. We then set an interval that will send a message to the process to
+which will then be grabbed by the child process object of fork. We use the
+environment variables inside our initialization of the twitter object. We also
+use the keyword assignment to have access to the keyword and increment the
+count.
+
+```bash
+bieber: 113 tweets
+obama: 69 tweets
+```
