@@ -3,8 +3,8 @@ var object = {
 	foo : 'bar',
 	joe : 'blogs',
 	ollie : {
-		twitter: "@ollieparsley",
-		url: "http://ollieparsley.com"
+		twitter: "@KLVTZ",
+		url: "http://justinpage.me/"
 	}
 };
 
