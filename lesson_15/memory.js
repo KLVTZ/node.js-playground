@@ -8,6 +8,7 @@ var object = {
 	}
 };
 
-// remove ollie
-object.ollie = null // frees up memory
-delete object.ollie;
+object.ollie = null // remove ollie
+console.log(object);
+delete object.ollie; // frees up memory
+console.log(object);
